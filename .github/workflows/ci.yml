@@ -18,7 +18,7 @@ jobs:
 
       - uses: actions/setup-go@v5
         with:
-          go-version: '1.27' # Match go.mod
+          go-version: '1.27'
           cache: true
 
       - name: Compile
@@ -36,7 +36,7 @@ jobs:
 
       - uses: actions/setup-go@v5
         with:
-          go-version: '1.27' # Match go.mod
+          go-version: '1.27'
           cache: true
 
       - name: Test
@@ -56,7 +56,7 @@ jobs:
       - name: golangci-lint
         uses: golangci/golangci-lint-action@v7
         with:
-          version: v2.13.2 # Match Makefile GOLINT_VERSION
+          version: v2.13.2
 
   docs:
     name: Documentation
