@@ -1,0 +1,17 @@
+{
+  "name": "terraform-provider-platctx",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Development tools for terraform-provider-platctx.",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "check:toolchain": "node --version && npm --version"
+  },
+  "devDependencies": {
+    "cspell": "10.2.0",
+    "markdown-link-check": "3.15.0",
+    "markdownlint-cli2": "0.23.2"
+  }
+}

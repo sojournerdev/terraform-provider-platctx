@@ -1,0 +1,20 @@
+{
+  "version": "0.2",
+  "language": "en-US",
+  "useGitignore": true,
+  "ignorePaths": [
+    "node_modules/**",
+    "vendor/**"
+  ],
+  "words": [
+    "HashiCorp",
+    "canonicalize",
+    "chargeback",
+    "golangci",
+    "Kubernetes",
+    "OpenTelemetry",
+    "platctx",
+    "sojournerdev",
+    "tfplugindocs"
+  ]
+}
