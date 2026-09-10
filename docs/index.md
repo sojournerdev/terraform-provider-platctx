@@ -8,13 +8,13 @@ description: |-
 
 The PlatCtx provider canonicalizes service metadata for platform engineering.
 
-## Why Use This
+## Goals
 
-Service metadata like identity, ownership, environment, and compliance facts often lives in different places depending on the cloud provider. When you move workloads across providers or environments, that context breaks.
+In enterprise environments with many teams, cloud providers, and modules, service metadata like identity, ownership, environment, and compliance facts is required by every resource, but each provider expects it in a different format. When you move workloads across providers or environments, that context breaks.
 
-PlatCtx gives you provider-agnostic service metadata that travels with your resources. The `canonicalize` function validates and normalizes this metadata into a consistent typed structure so downstream tools and modules can rely on it.
+PlatCtx centralizes this metadata into a single source of truth. The `canonicalize` function validates and normalizes it into a consistent typed structure that passes cleanly downstream to modules, tooling, and service catalogs like Backstage.
 
-This metadata powers service catalogs like Backstage, where it drives service discovery, ownership tracking, and compliance reporting.
+If your environment only uses one provider and a handful of modules, you likely don't need this. PlatCtx is built for scale, where visibility and auditing across providers and teams is the hard problem.
 
 ## Example Usage
 
