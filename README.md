@@ -41,7 +41,7 @@ output "context" {
     }
   })
   # Returns provider-agnostic context with normalized
-  # identity, ownership, environment, and tags
+  # identity, ownership, environment, and governance
 }
 ```
 

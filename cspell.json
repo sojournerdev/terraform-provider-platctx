@@ -11,6 +11,7 @@
     "canonicalize",
     "chargeback",
     "golangci",
+    "govulncheck",
     "Kubernetes",
     "OpenTelemetry",
     "platctx",
