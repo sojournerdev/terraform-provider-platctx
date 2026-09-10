@@ -1,6 +1,60 @@
-node_modules/
-bin/
-.terraform-dev/
-.terraformrc
+# Terraform
+.terraform/
 *.tfstate
-examples/.terraform/
+*.tfstate.*
+*.tfvars
+*.tfvars.json
+*.tfplan
+*.tfplan.json
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+.terraformrc
+terraform.rc
+
+# Provider builds
+terraform-provider-*
+bin/
+dist/
+
+# Go
+*.exe
+*.dll
+*.so
+*.dylib
+*.test
+*.prof
+coverage.out
+go.work
+go.work.sum
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Backups and temp
+*.backup
+*.bak
+*.tmp
+*.temp
+*~
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Editors / OS
+.idea/
+.vscode/
+*.iml
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
