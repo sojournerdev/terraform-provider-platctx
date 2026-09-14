@@ -16,6 +16,15 @@ Pass a context object with identity, ownership, and optional environment and gov
 ### Basic
 
 ```terraform
+terraform {
+  required_providers {
+    platctx = {
+      source  = "registry.terraform.io/sojournerdev/platctx"
+      version = "~> 0.1.0"
+    }
+  }
+}
+
 output "context" {
   value = provider::platctx::canonicalize({
     identity = {
@@ -33,6 +42,15 @@ output "context" {
 ### With Governance
 
 ```terraform
+terraform {
+  required_providers {
+    platctx = {
+      source  = "registry.terraform.io/sojournerdev/platctx"
+      version = "~> 0.1.0"
+    }
+  }
+}
+
 output "context" {
   value = provider::platctx::canonicalize({
     identity = {
@@ -58,6 +76,15 @@ output "context" {
 Use the canonicalized output to feed service metadata into a platform module:
 
 ```terraform
+terraform {
+  required_providers {
+    platctx = {
+      source  = "registry.terraform.io/sojournerdev/platctx"
+      version = "~> 0.1.0"
+    }
+  }
+}
+
 locals {
   ctx = provider::platctx::canonicalize({
     identity = {
@@ -90,8 +117,6 @@ module "service" {
   data_classification = local.ctx.governance.data_classification
 }
 ```
-
-This pattern works across cloud providers and modules. The same context object passes cleanly downstream regardless of which resources the module creates.
 
 ## Signature
 

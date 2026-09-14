@@ -8,14 +8,25 @@ description: |-
 
 PlatCtx gives you a single, typed structure for service metadata that works across cloud providers and modules. Instead of duplicating identity, ownership, environment, and governance data for every provider, you define it once with `provider::platctx::canonicalize` and pass the result downstream.
 
-If you only use one provider and a few modules, you probably do not need this. PlatCtx is built for teams that need consistent metadata across many providers, environments, and service catalogs.
+## Goals
+
+- One typed structure for service metadata across all providers and modules.
+- Validate metadata at the Terraform boundary, before resources are created.
+- Produce a canonical form that downstream tools and service catalogs can rely on.
+- Pure and deterministic: no network calls, no side effects.
+
+## Non-goals
+
+- Replacing cloud-provider-specific tagging or labeling.
+- Managing infrastructure or calling external APIs.
+- Enforcing organizational policy. PlatCtx carries facts; policy is the caller's responsibility.
 
 ## Requirements
 
 | Dependency | Version |
 | --- | --- |
 | [Terraform](https://developer.hashicorp.com/terraform/downloads) | >= 1.8 |
-| [Go](https://golang.org/doc/install) (for development) | >= 1.27 |
+| [OpenTofu](https://opentofu.org/) | >= 1.8 |
 
 ## Example Usage
 
@@ -23,11 +34,9 @@ A `provider "platctx"` block is not required. Only the `required_providers` bloc
 
 ```terraform
 terraform {
-  required_version = ">= 1.8"
-
   required_providers {
     platctx = {
-      source  = "sojournerdev/platctx"
+      source  = "registry.terraform.io/sojournerdev/platctx"
       version = "~> 0.1.0"
     }
   }
@@ -40,7 +49,8 @@ output "context" {
       namespace = "platform"
     }
     ownership = {
-      owned_by = "team:platform"
+      owned_by    = "team:platform"
+      operated_by = "team:sre"
     }
   })
 }
@@ -48,7 +58,7 @@ output "context" {
 
 ## Security
 
-This provider makes no network requests, reads no environment variables, and collects no telemetry. All computation is local and deterministic.
+This provider makes no network requests, reads no environment variables, and collects no telemetry. All computation is local and deterministic. See [SECURITY.md](https://github.com/sojournerdev/terraform-provider-platctx/blob/main/SECURITY.md) for the vulnerability disclosure policy and full security details.
 
 ## Updating Your Lockfile
 

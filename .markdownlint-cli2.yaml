@@ -6,3 +6,4 @@ globs:
   - "**/*.md"
   - "!node_modules/**"
   - "!vendor/**"
+  - "!.github/**"

@@ -4,8 +4,7 @@ Thank you for your support in wanting to improve the PlatCtx provider! Every con
 
 ## Prerequisites
 
-- [Go](https://golang.org/doc/install) >= 1.27
-- [Terraform](https://developer.hashicorp.com/terraform/downloads) >= 1.8
+See [README.md](README.md#requirements) for required versions of Go and Terraform.
 
 ## Getting Started
 
@@ -44,19 +43,24 @@ make test-acc
 
 ## Documentation
 
-After changing schemas or function definitions, regenerate documentation:
-
-```bash
-make docs-generate
-```
-
-Verify documentation passes all quality gates:
+After changing schemas or function definitions, run:
 
 ```bash
 make check-docs
 ```
 
-Do not manually edit files in `docs/`. Edit templates in `templates/` instead.
+This regenerates documentation from templates and runs all quality gates (lint, spell check, link check, validation).
+
+The `docs/` directory contains both generated and manually maintained files:
+
+- **`docs/index.md`**, **`docs/functions/`** — generated from `templates/`. Do not edit by hand; edit the templates instead.
+- **`docs/adr/`**, **`docs/design/`** — internal architecture docs maintained by hand. These are not regenerated.
+
+To regenerate without running all checks:
+
+```bash
+make docs-generate
+```
 
 ## Commit Messages
 
