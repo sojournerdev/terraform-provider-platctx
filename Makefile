@@ -28,7 +28,7 @@ LDFLAGS   := -s -w -X main.version=$(VERSION)
 
 .PHONY: help tools build install test test-acc lint fmt vet vuln clean \
         check check-go check-docs \
-        docs docs-generate docs-validate docs-lint docs-spell docs-links docs-fmt \
+        docs-generate docs-validate docs-lint docs-spell docs-links docs-fmt \
         dev
 
 help:
@@ -46,7 +46,6 @@ help:
 	@printf '  check              Full CI suite (Go + docs)\n'
 	@printf '  check-go           All Go quality gates\n'
 	@printf '  check-docs         All documentation quality gates\n'
-	@printf '  docs               Alias for check-docs\n'
 	@printf '  docs-generate      Generate Registry documentation\n'
 	@printf '  docs-validate      Validate generated documentation\n'
 	@printf '  docs-lint          Lint Markdown structure and style\n'
@@ -128,6 +127,8 @@ check-go:
 	@$(MAKE) vuln
 
 check-docs:
+	@echo "\n=== Docs Generate ==="
+	@$(MAKE) docs-generate
 	@echo "\n=== Docs Lint ==="
 	@$(MAKE) docs-lint
 	@echo "\n=== Docs Spell ==="
@@ -136,8 +137,6 @@ check-docs:
 	@$(MAKE) docs-links
 	@echo "\n=== Docs Validate ==="
 	@$(MAKE) docs-validate
-
-docs: check-docs
 
 docs-lint: $(NODE_DEPS)
 	$(NODE_BIN)/markdownlint-cli2
